@@ -31,7 +31,7 @@ namespace Playground.Test
         {
             //arrange
             var harry = new Wizard("Harry Potter");
-            harry.Learn(new Spell("stupefix","stun",1));
+            harry.Learn(Spell.ValueOf("stupefix","stun",1));
             var albus = new Wizard("Albus Dumbledore");
             
             //act
@@ -45,8 +45,8 @@ namespace Playground.Test
         [TestMethod]
         public void SpellWithSameDamageAndStateAreEqual(){
             //arrange
-            var spell = new Spell("stupefix","stun",1);
-            var spell2 = new Spell("stupefix-alternatif","stun",1);
+            var spell = Spell.ValueOf("stupefix","stun",1);
+            var spell2 = Spell.ValueOf("stupefix-alternatif","stun",1);
 
             //act
             var result = spell.Equals(spell2);
@@ -58,14 +58,22 @@ namespace Playground.Test
         [TestMethod]
         public void SpellWithSameDamageAndStateReturnSameHashCode(){
             //arrange
-            var spell = new Spell("stupefix","stun",1);
-            var spell2 = new Spell("stupefix-alternatif","stun",1);
+            var spell = Spell.ValueOf("stupefix","stun",1);
+            var spell2 = Spell.ValueOf("stupefix-alternatif","stun",1);
 
             //act
             var result = spell.GetHashCode() == spell2.GetHashCode();
 
             //assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void SpellIsInstanciedInValueOfMethod(){
+            var spell = Spell.ValueOf("stupefix","stun",1);
+
+            Assert.AreEqual(typeof(Spell),spell.GetType());
+        
         }
     }
 
@@ -75,11 +83,16 @@ namespace Playground.Test
         private string state;
         private int damage;
 
-        public Spell(string name, string state, int damage)
+        private Spell(string name, string state, int damage)
         {
             this.Name = name;
             this.state = state;
             this.damage = damage;
+        }
+
+        public static Spell ValueOf(string name, string state, int damage)
+        {
+           return new Spell(name,state,damage);
         }
 
         public override bool Equals(object? s){
