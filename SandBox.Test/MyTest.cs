@@ -96,7 +96,21 @@ namespace Playground.Test
     {
         public void TellTheHouseFor(Wizard wizard)
         {
-           wizard.House = House.Slytherin;
+            switch (wizard.Name)
+            {
+                case "Drago":
+                    wizard.House = House.Slytherin;
+                break;
+                case "harry potter":
+                    wizard.House = House.Gryffindor;
+                break;
+                case "Cédric Digory":
+                    wizard.House = House.Hufflepuff;
+                break;
+                case "Luna Lovegood":
+                    wizard.House = House.Ravenclaw;
+                break;
+            }           
         }
     }
 
@@ -104,6 +118,8 @@ namespace Playground.Test
     {
         public void TellTheHouseFor(Wizard wizard);
     }
+
+    
 
     public sealed class Spell
     {
@@ -154,7 +170,7 @@ namespace Playground.Test
             this.name = name;
             this.Health = 10;
         }
-
+        public string Name { get => name; }
         public House House { get; internal set; }
         public int Health { get; internal set; }
         public string State { get; internal set; }
