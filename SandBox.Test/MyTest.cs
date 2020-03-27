@@ -9,13 +9,34 @@ namespace Playground.Test
     public class MyTest
     {
         [TestMethod]
-        public void WhatShouldITest()
+        public void WizardChooseGryffindor()
         {
             //arrange
-            
+
+            var wizard = new Wizard("harry potter");
+
             //act
+            wizard.SelectHouse("Gryffindor");
 
             //assert
+            Assert.AreEqual("Gryffindor", wizard.House);
+        }
+    }
+
+    public class Wizard
+    {
+        private string name;
+
+        public Wizard(string name)
+        {
+            this.name = name;
+        }
+
+        public string House { get; internal set; }
+
+        internal void SelectHouse(string house)
+        {
+            this.House = house;
         }
     }
 }
