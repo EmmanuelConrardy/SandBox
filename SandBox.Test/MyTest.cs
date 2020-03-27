@@ -26,7 +26,7 @@ namespace Playground.Test
             Assert.AreEqual(house, wizard.House);
         }
 
-         [TestMethod]
+        [TestMethod]
         public void WizardUseStupefix()
         {
             //arrange
@@ -41,11 +41,17 @@ namespace Playground.Test
             Assert.AreEqual(9,albus.Health);
             Assert.AreEqual("stun",albus.State);
         }
+
+        [TestMethod]
+        public void Test(){
+            var spell = new Spell("test","test",1);
+           // spell.Name = "stupefix";
+        }
     }
 
-    internal class Spell
+    public sealed class Spell
     {
-        public string Name;
+        public readonly string Name;
         private string state;
         private int damage;
 
@@ -55,6 +61,11 @@ namespace Playground.Test
             this.state = state;
             this.damage = damage;
         }
+
+        public override bool Equals(object? obj){
+            return false;
+        }
+
 
         internal void On(Wizard wizard)
         {
