@@ -62,10 +62,16 @@ namespace Playground.Test
             this.damage = damage;
         }
 
-        public override bool Equals(object? obj){
-            return false;
-        }
+        public override bool Equals(object? s){
+            var spell = s as Spell;
+            if(spell == null){
+                return false;
+            }
 
+            var isStateEqual = this.state.Equals(spell.state);
+            var isDamageEqual = this.damage.Equals(spell.damage);
+            return isDamageEqual && isStateEqual;
+        }
 
         internal void On(Wizard wizard)
         {
