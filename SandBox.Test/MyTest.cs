@@ -9,18 +9,19 @@ namespace Playground.Test
     public class MyTest
     {
         [TestMethod]
-        [DataRow(House.Gryffindor)]
-        [DataRow(House.Slytherin)]
-        [DataRow(House.Hufflepuff)]
-        [DataRow(House.Ravenclaw)]
+        [DataRow(House.Gryffindor, "harry potter")]
+        [DataRow(House.Slytherin, "Drago")]
+        [DataRow(House.Hufflepuff, "Cédric Digory")]
+        [DataRow(House.Ravenclaw, "Luna Lovegood")]
 
-        public void WizardChoose(House house)
+        public void SortingHatAssign(House house, string wizardName)
         {
             //arrange
-            var wizard = new Wizard("harry potter");
+            var wizard = new Wizard(wizardName);
+            var sortingHat = new SortingHat();
 
             //act
-            wizard.SelectHouse(house);
+            sortingHat.TellTheHouseFor(wizard);
 
             //assert
             Assert.AreEqual(house, wizard.House);
@@ -101,7 +102,7 @@ namespace Playground.Test
 
     public interface ISortingHat
     {
-        public void TellTheHouseFor(Wizard wizard)
+        public void TellTheHouseFor(Wizard wizard);
     }
 
     public sealed class Spell
@@ -162,11 +163,6 @@ namespace Playground.Test
         internal void Learn(Spell spell)
         {
             spells.Add(spell);
-        }
-
-        internal void SelectHouse(House house)
-        {
-            this.House = house;
         }
 
         internal Spell Use(string spellName)
