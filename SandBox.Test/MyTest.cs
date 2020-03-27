@@ -75,6 +75,32 @@ namespace Playground.Test
             Assert.AreEqual(typeof(Spell),spell.GetType());
         
         }
+
+        [TestMethod]
+        public void SortingHatAssignSlytherin(){
+            //Arrange
+            var sortingHat = new SortingHat();
+            var drago = new Wizard("Drago");
+
+            //Act
+            sortingHat.TellTheHouseFor(drago);
+
+            //Assert
+            Assert.AreEqual(House.Slytherin, drago.House);
+
+        }
+    }
+
+    internal class SortingHat
+    {
+        public SortingHat()
+        {
+        }
+
+        internal void TellTheHouseFor(Wizard wizard)
+        {
+           wizard.House = House.Slytherin;
+        }
     }
 
     public sealed class Spell
@@ -119,7 +145,7 @@ namespace Playground.Test
 
     public class Wizard
     {
-        private string name;
+        private string name; // ID
 
         public Wizard(string name)
         {
