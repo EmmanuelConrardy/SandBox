@@ -12,14 +12,13 @@ namespace Playground.Test
         public void WizardChooseGryffindor()
         {
             //arrange
-
             var wizard = new Wizard("harry potter");
 
             //act
-            wizard.SelectHouse("Gryffindor");
+            wizard.SelectHouse(House.Gryffindor);
 
             //assert
-            Assert.AreEqual("Gryffindor", wizard.House);
+            Assert.AreEqual(House.Gryffindor, wizard.House);
         }
     }
 
@@ -32,11 +31,15 @@ namespace Playground.Test
             this.name = name;
         }
 
-        public string House { get; internal set; }
+        public House House { get; internal set; }
 
-        internal void SelectHouse(string house)
+        internal void SelectHouse(House house)
         {
             this.House = house;
         }
+    }
+
+    public enum House {
+        Gryffindor
     }
 }
