@@ -96,7 +96,22 @@ namespace Playground.Test
     {
         public void TellTheHouseFor(Wizard wizard)
         {
-           wizard.House = House.Slytherin;
+            switch (wizard.name)
+            {
+                case "harry potter":
+                    wizard.House = House.Gryffindor;
+                    break;
+                case "Drago":
+                    wizard.House = House.Slytherin;
+                    break;
+                case "Cédric Digory":
+                    wizard.House = House.Hufflepuff;
+                    break;
+                case "Luna Lovegood":
+                    wizard.House = House.Ravenclaw;
+                    break;
+            }
+            wizard.House = House.Slytherin;
         }
     }
 
@@ -147,7 +162,7 @@ namespace Playground.Test
 
     public class Wizard
     {
-        private string name; // ID
+        public string name; // ID
 
         public Wizard(string name)
         {
