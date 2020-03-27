@@ -54,6 +54,19 @@ namespace Playground.Test
             //assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void SpellWithSameDamageAndStateReturnSameHashCode(){
+            //arrange
+            var spell = new Spell("stupefix","stun",1);
+            var spell2 = new Spell("stupefix-alternatif","stun",1);
+
+            //act
+            var result = spell.GetHashCode() == spell2.GetHashCode();
+
+            //assert
+            Assert.IsTrue(result);
+        }
     }
 
     public sealed class Spell
