@@ -9,16 +9,17 @@ namespace Playground.Test
     public class MyTest
     {
         [TestMethod]
-        public void WizardChooseGryffindor()
+        [DataRow(House.Gryffindor)]
+        public void WizardChoose(House house)
         {
             //arrange
             var wizard = new Wizard("harry potter");
 
             //act
-            wizard.SelectHouse(House.Gryffindor);
+            wizard.SelectHouse(house);
 
             //assert
-            Assert.AreEqual(House.Gryffindor, wizard.House);
+            Assert.AreEqual(house, wizard.House);
         }
     }
 
