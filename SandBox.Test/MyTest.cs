@@ -9,7 +9,7 @@ namespace Playground.Test
     public class MyTest
     {
         [TestMethod]
-        [DataRow(House.Gryffindor, "harry potter")]
+        [DataRow(House.Gryffindor, "Harry Potter")]
         [DataRow(House.Slytherin, "Drago")]
         [DataRow(House.Hufflepuff, "Cédric Digory")]
         [DataRow(House.Ravenclaw, "Luna Lovegood")]
@@ -34,7 +34,7 @@ namespace Playground.Test
             var harry = new Wizard("Harry Potter");
             harry.Learn(Spell.ValueOf("stupefix","stun",1));
             var albus = new Wizard("Albus Dumbledore");
-            
+
             //act
             harry.Use("stupefix").On(albus);
 
@@ -74,7 +74,7 @@ namespace Playground.Test
             var spell = Spell.ValueOf("stupefix","stun",1);
 
             Assert.AreEqual(typeof(Spell),spell.GetType());
-        
+
         }
 
         [TestMethod]
@@ -96,7 +96,15 @@ namespace Playground.Test
     {
         public void TellTheHouseFor(Wizard wizard)
         {
-           wizard.House = House.Slytherin;
+           if(wizard.name == "Harry Potter") {
+             wizard.House = House.Gryffindor;
+           } else if(wizard.name == "Cédric Digory") {
+             wizard.House = House.Hufflepuff;
+           } else if(wizard.name == "Luna Lovegood") {
+             wizard.House = House.Ravenclaw;
+           } else {
+             wizard.House = House.Slytherin;
+           }
         }
     }
 
@@ -147,7 +155,7 @@ namespace Playground.Test
 
     public class Wizard
     {
-        private string name; // ID
+        public readonly string name; // ID
 
         public Wizard(string name)
         {
