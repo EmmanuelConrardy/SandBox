@@ -10,6 +10,10 @@ namespace Playground.Test
     {
         [TestMethod]
         [DataRow(House.Gryffindor)]
+        [DataRow(House.Slytherin)]
+        [DataRow(House.Hufflepuff)]
+        [DataRow(House.Ravenclaw)]
+
         public void WizardChoose(House house)
         {
             //arrange
@@ -41,6 +45,9 @@ namespace Playground.Test
     }
 
     public enum House {
-        Gryffindor
+        Gryffindor,
+        Slytherin,
+        Hufflepuff,
+        Ravenclaw
     }
 }
