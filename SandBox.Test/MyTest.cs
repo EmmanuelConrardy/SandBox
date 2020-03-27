@@ -91,16 +91,17 @@ namespace Playground.Test
         }
     }
 
-    internal class SortingHat
+    public class SortingHat : ISortingHat //Service
     {
-        public SortingHat()
-        {
-        }
-
-        internal void TellTheHouseFor(Wizard wizard)
+        public void TellTheHouseFor(Wizard wizard)
         {
            wizard.House = House.Slytherin;
         }
+    }
+
+    public interface ISortingHat
+    {
+        public void TellTheHouseFor(Wizard wizard)
     }
 
     public sealed class Spell
