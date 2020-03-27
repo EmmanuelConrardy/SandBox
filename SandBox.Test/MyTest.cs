@@ -95,8 +95,19 @@ namespace Playground.Test
     public class SortingHat : ISortingHat //Service
     {
         public void TellTheHouseFor(Wizard wizard)
-        {
-           wizard.House = House.Slytherin;
+        { // MODIF HERE POUR QU'IL Y AIT LA BONNE REPARTITION
+            if(String.Equals(wizard.GetName(),"harry potter")){
+                wizard.House = House.Gryffindor;
+            }
+            else if(String.Equals(wizard.GetName(),"Cédric Digory")){
+                wizard.House = House.Hufflepuff;
+            }
+            else if(String.Equals(wizard.GetName(),"Drago")){
+                wizard.House = House.Slytherin;
+            }
+            else if(String.Equals(wizard.GetName(),"Luna Lovegood")){
+                wizard.House = House.Ravenclaw;
+            }
         }
     }
 
@@ -155,6 +166,10 @@ namespace Playground.Test
             this.Health = 10;
         }
 
+        public string GetName()
+        {
+            return name;
+        }
         public House House { get; internal set; }
         public int Health { get; internal set; }
         public string State { get; internal set; }
