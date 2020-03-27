@@ -24,9 +24,16 @@
 
 ###### Wizard
 
-- il choisit un Maison <- RULE
-- Un Wizard "harry potter" choisit la maison "Gryffindor"
-  - Alors il appartient à la maison "Gryffindor"
+- Rule : Le choixpeau Attribut une maison 
+   - Un Choixpeau est mis sur la tête d'un Wizard "Drago" sans maison
+   - Quand le Choixpeau à announce le nom de la maison "Slytherin"
+   - Alors "Drago" appartient à la maison "Slytherin"
+
+- Rule : Un sorcier lance un sort sur un autre sorcier 
+  - Un Wizard "Harry potter" lance le sort offensif "stupefix"
+  - Sur "Albus Dumbledort"
+  - Alors "Albus Dumbledort" est "stun" et il prend 1 damage
+
 
 #### TDD [Red Green Refactor]
 
@@ -57,10 +64,17 @@ ValueOf() method
 Private constructor
 Sealed
 
-  
+
 
 #### Entity
 
 Define by an ID < immutable
 
-  
+
+
+#### Service
+
+Define by an interface.
+The interface is used to collaborate with domain object.
+
+   
