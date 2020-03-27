@@ -43,9 +43,16 @@ namespace Playground.Test
         }
 
         [TestMethod]
-        public void Test(){
-            var spell = new Spell("test","test",1);
-           // spell.Name = "stupefix";
+        public void SpellWithSameDamageAndStateAreEqual(){
+            //arrange
+            var spell = new Spell("stupefix","stun",1);
+            var spell2 = new Spell("stupefix-alternatif","stun",1);
+
+            //act
+            var result = spell.Equals(spell2);
+
+            //assert
+            Assert.IsTrue(result);
         }
     }
 
@@ -71,6 +78,10 @@ namespace Playground.Test
             var isStateEqual = this.state.Equals(spell.state);
             var isDamageEqual = this.damage.Equals(spell.damage);
             return isDamageEqual && isStateEqual;
+        }
+
+        public override int GetHashCode(){
+            return this.damage.GetHashCode() + this.state.GetHashCode();
         }
 
         internal void On(Wizard wizard)
