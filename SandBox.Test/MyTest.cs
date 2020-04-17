@@ -78,6 +78,16 @@ namespace Playground.Test
 
     public class SortingHat : ISortingHat //Service
     {
+        private static SortingHat instance = null;
+        public static SortingHat Instance  
+        {  
+            get {  
+                if (instance == null) {  
+                    instance = new SortingHat();  
+                }  
+                return instance;  
+            }  
+        } 
         public void TellTheHouseFor(Wizard wizard)
         {
            if(wizard.name == "Harry Potter") {
@@ -145,7 +155,7 @@ namespace Playground.Test
         {
             this.name = name;
             this.Health = 10;
-
+            SortingHat.Instance.TellTheHouseFor(this);
         }
 
         public House House { get; internal set; }
