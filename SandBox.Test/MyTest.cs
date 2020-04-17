@@ -18,10 +18,6 @@ namespace Playground.Test
         {
             //arrange
             var wizard = new Wizard(wizardName);
-            var sortingHat = new SortingHat();
-
-            //act
-            sortingHat.TellTheHouseFor(wizard);
 
             //assert
             Assert.AreEqual(house, wizard.House);
@@ -77,19 +73,7 @@ namespace Playground.Test
 
         }
 
-        [TestMethod]
-        public void SortingHatAssignSlytherin(){
-            //Arrange
-            var sortingHat = new SortingHat();
-            var drago = new Wizard("Drago");
-
-            //Act
-            sortingHat.TellTheHouseFor(drago);
-
-            //Assert
-            Assert.AreEqual(House.Slytherin, drago.House);
-
-        }
+       
     }
 
     public class SortingHat : ISortingHat //Service
@@ -161,6 +145,7 @@ namespace Playground.Test
         {
             this.name = name;
             this.Health = 10;
+
         }
 
         public House House { get; internal set; }
