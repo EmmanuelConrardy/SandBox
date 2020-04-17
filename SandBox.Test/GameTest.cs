@@ -40,6 +40,8 @@ namespace SandBox.Test
     {
         public void Start()
         {
+            
+            
             //initialisation
 
             //executiondestour(evaluation)
@@ -47,5 +49,22 @@ namespace SandBox.Test
 
             //DiplayRésult
         }
+        @Override
+        public void Init(int turn){
+            // create wizards
+        }
+        @Override
+        public void Turn(int turn){
+            while (turn >0)
+            {
+                //do something
+            }
+        }
+        @Override
+        public void DiplayRésult(int turn){
+            print("result");
+        }
     }
+
+    
 }
