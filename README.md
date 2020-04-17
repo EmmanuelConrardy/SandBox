@@ -34,6 +34,28 @@
   - Sur "Albus Dumbledort"
   - Alors "Albus Dumbledort" est "stun" et il prend 1 damage
 
+###### Game Wizard Dual
+
+- Turn by Turn
+- Deatheater / Auror
+- Winning when a side party is dead
+
+- Deatheater
+ - Ability : 2/3 
+ - Attack -> 2 pt
+ - Confuse -> -1
+
+- Auror
+ - Ability : 2/3
+ - Attack -> 2 pt
+ - Heal -> +1
+
+- House rule
+- Deatheater win -> -1 for all
+- Auror -> 1pt for each living
+
+
+
 
 #### TDD [Red Green Refactor]
 
