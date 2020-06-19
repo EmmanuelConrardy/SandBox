@@ -37,6 +37,6 @@ namespace Playground.Test
 
     public interface ISortingHat
     {
-        public void TellTheHouseFor(Wizard wizard);
+         void TellTheHouseFor(Wizard wizard);
     }
 }

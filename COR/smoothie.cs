@@ -39,7 +39,8 @@ namespace COR
             Assert.IsFalse(hasBeenChoosen);
         }
 
-        public void yolo()
+        [TestMethod]
+        public void Melissa()
         {
             var smothieLover = new ChainOfSmothieLovers()
                 .Of("Daniel") //nope
@@ -50,6 +51,38 @@ namespace COR
             SmoothieLover Melissa = smothieLover.GetByName("Melissa");
 
             Assert.AreEqual("Melissa", Melissa.GetName());
+        }
+
+        [TestMethod]
+        public void Anonyme()
+        {
+            var smothieLover = new ChainOfSmothieLovers()
+                .Of("Daniel") //nope
+                .Then("Jane") //nope
+                .Then("Melissa") //nope
+                .GetHead();
+
+            SmoothieLover anonyme = smothieLover.GetByName("Claf");
+
+            Assert.AreEqual("", anonyme.GetName());
+        }
+
+        [TestMethod]
+        public void TurnOff()
+        {
+            var smoothie = SmoothieFactory.Get("Raspberry");
+
+            var smothieLover = new ChainOfSmothieLovers()
+                .Of("Daniel") //nope
+                .Then("Jane") //nope
+                .Then("Melissa") //yes
+                .GetHead();
+
+            smothieLover.TurnOff("Melissa"); //but nope
+
+            var result = smothieLover.Recieve(smoothie);
+
+            Assert.IsFalse(result);
         }
     }
 
@@ -86,7 +119,7 @@ namespace COR
     public abstract class SmoothieLover
     {
         protected SmoothieLover NextSmothieLover;
-
+        protected bool isOn = true;
         protected virtual string Name { get; }
         public string GetName()
         {
@@ -101,7 +134,7 @@ namespace COR
         protected abstract bool Excute(Smoothie smoothie);
         public virtual bool Recieve(Smoothie smoothie)
         {
-            if (Check(smoothie))
+            if (isOn && Check(smoothie))
                 return Excute(smoothie);
 
             if (NextSmothieLover != null)
@@ -121,6 +154,15 @@ namespace COR
                 return NextSmothieLover.GetByName(name);
 
             return new SmoothieLoverAnonyme();
+        }
+
+        internal void TurnOff(string name)
+        {
+            if (Name == name)
+                isOn = false;
+
+            if (NextSmothieLover != null)
+                NextSmothieLover.TurnOff(name);
         }
 
         //définir de nouveau comportement

@@ -18,16 +18,16 @@ namespace Playground.Test
            return new Spell(name,state,damage);
         }
 
-        public override bool Equals(object? s){
-            var spell = s as Spell;
-            if(spell == null){
-                return false;
-            }
+        //public override bool Equals(object? s){
+        //    var spell = s as Spell;
+        //    if(spell == null){
+        //        return false;
+        //    }
 
-            var isStateEqual = this.state.Equals(spell.state);
-            var isDamageEqual = this.damage.Equals(spell.damage);
-            return isDamageEqual && isStateEqual;
-        }
+        //    var isStateEqual = this.state.Equals(spell.state);
+        //    var isDamageEqual = this.damage.Equals(spell.damage);
+        //    return isDamageEqual && isStateEqual;
+        //}
 
         public override int GetHashCode(){
             return this.damage.GetHashCode() + this.state.GetHashCode();
